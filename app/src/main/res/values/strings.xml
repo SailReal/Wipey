@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Wipey</string>
+    <string name="app_policy_admin_name">Wipey Receiver</string>
+
+    <string name="setup_amount_password_retries">Amount of password retries</string>
+    <string name="device_admin_activation_message">Wipey needs to become a device administrator for enabling the wipe data mode in android.</string>
+
+    <string name="excecute">Execute</string>
+
+    <string name="successfully_activated">Successfully activated wipe data after %d retries!</string>
+
+</resources>
