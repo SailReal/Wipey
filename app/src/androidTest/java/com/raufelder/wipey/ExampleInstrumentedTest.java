@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.raufelder.enhancesec", appContext.getPackageName());
+        assertEquals("com.raufelder.wipey", appContext.getPackageName());
     }
 }
