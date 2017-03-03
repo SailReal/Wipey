@@ -19,14 +19,13 @@ import butterknife.OnClick;
 public class PolicySetupActivity extends Activity {
     private static final int REQ_ACTIVATE_DEVICE_ADMIN = 10;
 
+    private int amountFailedPasswordsForWipe = 10; /* default */
+
     private DevicePolicyManager devicePolicyManager;
     private ComponentName policyAdmin;
 
-    private int currentScreenId;
-    private int amountFailedPasswordsForWipe = 10; /* default */
-
-    private @BindView(R2.id.action_button) Button actionButton;
-    private @BindView(R2.id.amount_failed_passwords_for_wipe) EditText amountFailedPasswordsForWipeInputField;
+    @BindView(R2.id.action_button) Button actionButton;
+    @BindView(R2.id.amount_failed_passwords_for_wipe) EditText amountFailedPasswordsForWipeInputField;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,8 +77,7 @@ public class PolicySetupActivity extends Activity {
     }
 
     private void setScreenContent(final int screenId) {
-        currentScreenId = screenId;
-        setContentView(currentScreenId);
+        setContentView(screenId);
         ButterKnife.bind(this);
 
         if(!devicePolicyManager.isAdminActive(policyAdmin)) {
