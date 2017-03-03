@@ -69,6 +69,15 @@ public class PolicySetupActivity extends Activity {
 
     @OnClick(R2.id.action_button)
     public void submitButton(View view) {
+        try {
+            int amountFailedPasswordsForWipe = Integer.parseInt(amountFailedPasswordsForWipeInputField.getText().toString());
+            if(amountFailedPasswordsForWipe > 0)
+                    this.amountFailedPasswordsForWipe = amountFailedPasswordsForWipe;
+        }
+        catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
         Intent activateDeviceAdminIntent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
         activateDeviceAdminIntent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, policyAdmin);
 
