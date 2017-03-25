@@ -9,4 +9,6 @@
 
     <string name="successfully_activated">Successfully activated wipe data after %d retries!</string>
 
+    <string name="usage">If the limit is reached, your complete data get wiped.</string>
+
 </resources>
