@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EclipseCodeFormatterProjectSettings">
+    <option name="selectedGlobalProfile">
+      <Settings>
+        <option name="id" value="1488794001132" />
+        <option name="name" value="default" />
+        <option name="optimizeImports" value="false" />
+        <option name="pathToConfigFileJava" value="$USER_HOME$/skymatic/cryptomator/android/eclipse+formatter.xml" />
+        <option name="selectedJavaProfile" value="Cryptomator" />
+      </Settings>
+    </option>
+  </component>
+</project>
