@@ -7,8 +7,11 @@
 
     <string name="excecute">Execute</string>
 
-    <string name="successfully_activated">Successfully activated wipe data after %d retries!</string>
+    <string name="successfully_activated_wipe">Successfully activated wipe data after %d retries!</string>
+    <string name="successfully_activated_reboot">Successfully activated reboot data after %d retries!</string>
 
-    <string name="usage">If the limit is reached, your complete data get wiped.</string>
+    <string name="usage">If the limit is reached,</string>
 
+    <string name="wipe_data">wipe data</string>
+    <string name="reboot">only reboot</string>
 </resources>
