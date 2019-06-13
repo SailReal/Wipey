@@ -33,13 +33,13 @@ public class PolicySetupActivity extends Activity {
 	private ComponentName policyAdmin;
 	private Context context;
 
-	@BindView(R2.id.action_button)
+	@BindView(R.id.action_button)
 	Button actionButton;
-	@BindView(R2.id.amount_failed_passwords_for_wipe)
+	@BindView(R.id.amount_failed_passwords_for_wipe)
 	EditText amountFailedPasswordsForWipeInputField;
-	@BindView(R2.id.reboot)
+	@BindView(R.id.reboot)
 	RadioButton rebootRadio;
-	@BindView(R2.id.wipe_data)
+	@BindView(R.id.wipe_data)
 	RadioButton wipeData;
 
 	@Override
@@ -55,7 +55,18 @@ public class PolicySetupActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		setScreenContent(R.layout.activity_policy_setup);
+
+		setContentView(R.layout.activity_policy_setup);
+		ButterKnife.bind(this);
+
+		amountFailedPasswordsForWipeInputField.setText(String.valueOf(amountOfFailedLogin(context)));
+		if (isWipeActivated(context)) {
+			wipeData.setChecked(true);
+			rebootRadio.setChecked(false);
+		} else {
+			wipeData.setChecked(false);
+			rebootRadio.setChecked(true);
+		}
 	}
 
 	@Override
@@ -87,7 +98,7 @@ public class PolicySetupActivity extends Activity {
 		}
 	}
 
-	@OnClick(R2.id.action_button)
+	@OnClick(R.id.action_button)
 	public void submitButton(View view) {
 		try {
 			int amountFailedPasswordsForWipe = Integer.parseInt(amountFailedPasswordsForWipeInputField.getText().toString());
@@ -111,20 +122,6 @@ public class PolicySetupActivity extends Activity {
 		startActivityForResult(activateDeviceAdminIntent, REQ_ACTIVATE_DEVICE_ADMIN);
 	}
 
-	private void setScreenContent(final int screenId) {
-		setContentView(screenId);
-		ButterKnife.bind(this);
-
-		amountFailedPasswordsForWipeInputField.setText(String.valueOf(amountOfFailedLogin(context)));
-		if (isWipeActivated(context)) {
-			wipeData.setChecked(true);
-			rebootRadio.setChecked(false);
-		} else {
-			wipeData.setChecked(false);
-			rebootRadio.setChecked(true);
-		}
-	}
-
 	public static class PolicyAdmin extends DeviceAdminReceiver {
 		@Override
 		public void onPasswordFailed(Context context, Intent intent) {
@@ -142,7 +139,7 @@ public class PolicySetupActivity extends Activity {
 				if (devicePolicyManager.getCurrentFailedPasswordAttempts() >= amountOfFailedLogin(context)) {
 					try {
 						Process proc = Runtime.getRuntime()
-											  .exec(new String[]{"su", "-c", "reboot -p"});
+								.exec(new String[]{"su", "-c", "reboot -p"});
 						proc.waitFor();
 					} catch (Exception ex) {
 						Log.e("PolicyAdmin", "Failed to reboot");

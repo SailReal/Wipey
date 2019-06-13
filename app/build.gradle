@@ -2,16 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.raufelder.wipey"
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 3
-        versionName "1.2.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 4
+        versionName "1.2.2"
     }
+
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,14 +26,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Field and method binding for Android views
-    compile 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    androidTestImplementation 'junit:junit:4.12'
+
+    implementation "androidx.appcompat:appcompat:1.1.0-beta01"
+
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 }
